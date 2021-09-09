@@ -6,19 +6,9 @@ namespace BankOO
     {
         static void Main(string[] args)
         {
-            ContaCorrente contaDoVinicius = new ContaCorrente();
+            ContaCorrente contaDoVinicius = new ContaCorrente("Vinícius", 863, 863146, 100);
 
-            contaDoVinicius.titular = "Vinicius";
-            contaDoVinicius.agencia = 863;
-            contaDoVinicius.conta = 863146;
-            contaDoVinicius.saldo = 100;
-
-            ContaCorrente contaDoJoao = new ContaCorrente();
-
-            contaDoJoao.titular = "João";
-            contaDoJoao.agencia = 357;
-            contaDoJoao.conta = 357135;
-            contaDoJoao.saldo = 120;
+            ContaCorrente contaDoJoao = new ContaCorrente("João", 357, 357135, 120);
 
             Console.WriteLine("O titular da conta é: " +contaDoVinicius.titular);
             Console.WriteLine("O titular da conta é: " +contaDoJoao.titular);
