@@ -13,10 +13,10 @@ namespace myBank
             contaDoVinicius.Sacar(50);
             Console.WriteLine("O saldo da conta da Vinicius após o saque é: " + contaDoVinicius.Saldo);
 
-            /* contaDoVinicius.Depositar(100);
-            Console.WriteLine("O saldo da conta do Vinicius após o depósito é: " + contaDoVinicius.saldo);
+            //contaDoVinicius.Depositar(100);
+            Console.WriteLine("Contas criadas " + ContaCorrente.TotalDeContasCriadas);
 
-            contaDoVinicius.Transferir(100, contaDaMaria);
+            /*contaDoVinicius.Transferir(100, contaDaMaria);
             Console.WriteLine("O saldo da conta do Vinicius após a transferência é: " + contaDoVinicius.saldo);
             Console.WriteLine("O saldo da conta da Maria após a transferência é: " + contaDaMaria.saldo); */
         }

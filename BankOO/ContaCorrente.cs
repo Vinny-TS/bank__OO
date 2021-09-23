@@ -2,6 +2,7 @@ public class ContaCorrente{
     public string Titular { get; set; }
     public int Agencia { get; set; }
     public int Conta { get; set; }
+    public static int TotalDeContasCriadas {get; set;}
     private double _saldo;
     public double Saldo { get{
         return this._saldo;
@@ -20,6 +21,7 @@ public class ContaCorrente{
         Agencia = contacorrente_agencia;
         Conta = contacorrente_conta;
         Saldo = contacorrente_saldo;
+        TotalDeContasCriadas ++;
     }
 
     public bool Sacar (double valor){
