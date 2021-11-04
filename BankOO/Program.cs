@@ -6,33 +6,82 @@ namespace myBank
     {
         static void Main(string[] args)
         {
-            Funcionario funcionarioVinicius = new Funcionario("Vinicius Telles", "123.123.123-45", "Diretor", 1200, 1);
-            Funcionario funcionarioCarlos = new Funcionario("Carlos", "123.456.789-10", "Vendedor", 1200, 1);
-            Funcionario funcionarioDaniel = new Funcionario("Daniel", "321.654.987-01", "Vendedor", 1200, 1);
+            Gerente gerenteCarlosDaniel = new Gerente(){
+                Nome = "Carlos Daniel",
+                CPF = "567.123.789-11",
+                Salario = 2000,
+                NumeroDeAgencias = 5,
+            };
 
+            Vendedor vendedorGabriel = new Vendedor(){
+                Nome = "Gabriel",
+                CPF = "123.456.789-00",
+                Salario = 1000,
+                NumeroClientesAtendidos = 5,
+            };
+                    
+            Vendedor vendedorFelipe = new Vendedor(){
+                Nome = "Felipe",
+                CPF = "098.765.432-10",
+                Salario = 1000,
+                NumeroClientesAtendidos = 3,
+            };
 
-            ContaCorrente contaDoCharles = new ContaCorrente("Charles", 1234, 789, 100, funcionarioVinicius);
-            ContaCorrente contaDoGeorge = new ContaCorrente("George", 1234, 790, 120, funcionarioDaniel);
-            ContaCorrente contaDoValtteri = new ContaCorrente("Valtteri", 1234, 791, 150, funcionarioCarlos);
+            vendedorFelipe.Bonificacao = vendedorFelipe.Salario;
 
+            ContaCorrente contaDaVirginiaLeticiaAfonso = new ContaCorrente("Virginia Leticia Afonso", 1234, 1000, vendedorFelipe);
+            contaDaVirginiaLeticiaAfonso.Conta = 789;
+            ContaCorrente contaDoMateus = new ContaCorrente("Mateus", 1234, 120, vendedorFelipe);
+            contaDoMateus.Conta = 789;
+            ContaCorrente contaDoJonatan = new ContaCorrente("Jonatan", 5678, 15000, vendedorGabriel);
+            contaDoJonatan.Conta = 123;
 
-            funcionarioCarlos.Bonificacao = funcionarioCarlos.Salario;
-            funcionarioDaniel.Bonificacao = funcionarioDaniel.Salario;
-            funcionarioVinicius.Bonificacao = funcionarioVinicius.Salario;
+            Console.WriteLine("As contas são:");
+            Console.WriteLine("Conta 1:\nNome: "+contaDaVirginiaLeticiaAfonso.Titular+
+            "\nAgência: "+contaDaVirginiaLeticiaAfonso.Agencia+
+            "\nSaldo: "+contaDaVirginiaLeticiaAfonso.Saldo);
 
-            Console.WriteLine("Bonificação: R$" + funcionarioVinicius.Bonificacao);
-            Console.WriteLine("O total de contas criadas é de: " + ContaCorrente.TotalDeContasCriadas + " conta(s).");
-            Console.WriteLine("Saldo inicial: Charles R$" + contaDoCharles.Saldo + "; conta vendida pelo vendedor: " + funcionarioVinicius.Nome + ", que recebeu uma comissão de: R$" + funcionarioVinicius.Comissao);
-            Console.WriteLine("Saldo inicial: George R$" + contaDoGeorge.Saldo + "; conta vendida pelo vendedor: " + funcionarioDaniel.Nome + ", que recebeu uma comissão de: R$" + funcionarioDaniel.Comissao);
-            Console.WriteLine("Saldo inicial: Valtteri R$" + contaDoValtteri.Saldo + "; conta vendida pelo vendedor: " + funcionarioCarlos.Nome + ", que recebeu uma comissão de: R$" + funcionarioCarlos.Comissao);
+            Console.WriteLine("\nConta 2:\nNome: "+contaDoMateus.Titular+
+            "\nAgência: "+contaDoMateus.Agencia+
+            "\nSaldo: "+contaDoMateus.Saldo);
 
-            contaDoCharles.Sacar(10);
-            contaDoGeorge.Depositar(50);
-            contaDoValtteri.Transferir(30, contaDoCharles);
+            Console.WriteLine("\nConta 3:\nNome: "+contaDoJonatan.Titular+
+            "\nAgência: "+contaDoJonatan.Agencia+
+            "\nSaldo: "+contaDoJonatan.Saldo);
 
-            Console.WriteLine("Saldo após saque: Charles R$" + contaDoCharles.Saldo);
-            Console.WriteLine("Saldo após depósito: George R$" + contaDoGeorge.Saldo);
-            Console.WriteLine("Saldo após transferência: Valtteri R$" + contaDoValtteri.Saldo + "; Saldo após transferência: Charles R$" + contaDoCharles.Saldo);
+            Console.WriteLine("\nOs funcinários são:");
+            Console.WriteLine("Funcionario 1:\nNome: "+vendedorGabriel.Nome+
+            "\nCPF: "+vendedorGabriel.CPF+"\nSalário: "+vendedorGabriel.Salario+
+            "\nComissão: "+vendedorGabriel.Comissao+"\nBonificação: "+vendedorGabriel.Bonificacao+
+            "\nDias de férias: "+vendedorGabriel.CalcularFerias()+
+            "\nRemuneração total: "+vendedorGabriel.RemuneracaoTotal(vendedorGabriel.Salario));
+
+            Console.WriteLine("\nFuncionario 2:\nNome: "+vendedorFelipe.Nome+
+            "\nCPF: "+vendedorFelipe.CPF+"\nSalário: "+vendedorFelipe.Salario+
+            "\nComissão: "+vendedorFelipe.Comissao+"\nBonificação: "+vendedorFelipe.Bonificacao+
+            "\nDias de férias: "+vendedorFelipe.CalcularFerias()+
+            "\nRemuneração total: "+vendedorFelipe.RemuneracaoTotal(vendedorFelipe.Salario, vendedorFelipe.Bonificacao));
+
+            Console.WriteLine("\nGerente:\nNome: "+gerenteCarlosDaniel.Nome+
+            "\nCPF: "+gerenteCarlosDaniel.CPF+"\nSalário: "+gerenteCarlosDaniel.Salario+
+            "\nComissão: "+gerenteCarlosDaniel.Comissao+"\nBonificação: "+gerenteCarlosDaniel.Bonificacao+
+            "\nDias de férias: "+gerenteCarlosDaniel.CalcularFerias()+
+            "\nRemuneração total: "+gerenteCarlosDaniel.RemuneracaoTotal(gerenteCarlosDaniel.Salario));
+
+            Console.WriteLine("\nSacar R$100,00 da conta do Jonatan.");
+            contaDoJonatan.Sacar(100);
+            Console.WriteLine("O saldo da conta do Jonatan é: "+ contaDoJonatan.Saldo);
+
+            Console.WriteLine("\nDepositar R$380,00 na conta do Mateus.");
+            contaDoMateus.Depositar(380);
+            Console.WriteLine("O saldo da conta do Mateus é: "+ contaDoMateus.Saldo);
+
+            Console.WriteLine("\nTransferir R$500,00 da conta do Jonatan para a conta da Virginia.");
+            contaDoJonatan.Transferir(500, contaDaVirginiaLeticiaAfonso);
+            Console.WriteLine("O saldo da conta do Jonatan é: "+ contaDoJonatan.Saldo);
+            Console.WriteLine("O saldo da conta da Virginia é: "+ contaDaVirginiaLeticiaAfonso.Saldo);
+
+            Console.WriteLine("\nO número de contas criadas é: "+ContaCorrente.TotaldeContasCriadas);
         }
     }
 }

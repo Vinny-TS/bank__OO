@@ -1,30 +1,26 @@
-public class Funcionario{
+public abstract class Funcionario : PessoaFisica{
     public string Nome { get; set; }
     public string CPF { get; set; }
-    public string Cargo { get; set; }
     public double Salario { get; set; }
     public double Comissao { get; set; }
-    private double _bonificacao;
-    public double Bonificacao { 
+    protected double _bonificacao;
+
+    public virtual double Bonificacao {
         get{
             return _bonificacao;
-        } 
+        }
         set{
-            if(this.Cargo == "Vendedor"){
-                _bonificacao += value * 0.02;
-            }
-            if(this.Cargo == "Diretor"){
-                _bonificacao += value * 0.08;
-            }  
+            _bonificacao += Salario * 0.01;
         } 
     }
 
-    public Funcionario(string funcionario_nome, string funcionario_cpf, string funcionario_cargo, double funcionario_salario, double funcionario_bonificacao)
-    { 
-        Nome = funcionario_nome;
-        CPF = funcionario_cpf;
-        Cargo = funcionario_cargo;
-        Salario = funcionario_salario;
-        Bonificacao = funcionario_bonificacao;
+    public abstract int CalcularFerias();
+
+    public double RemuneracaoTotal(double Salario){
+        return Salario * 12 + Salario;
+    }
+
+    public double RemuneracaoTotal(double Salario, double Bonificacao){
+        return Salario * 12 + Salario + Bonificacao;
     }
 }
